@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>{% block title %} ShoesAPI {% endblock %}</title>
+
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'shoes' %}">Shoes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'clothing' %}">Clothing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'accessories' %}">Accessories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cart:cart_detail' %}">Cart</a>
+        </li> 
+      </ul>
+      <script src="https://unpkg.com/htmx.org@1.1.0"></script>
+  </body>
+</html>
+<script src="https://unpkg.com/htmx.org@1.1.0"></script> 
+
+<!-- CSRF request in the headers -->
+<script>
+document.body.addEventListener('htmx:configRequest', (e) => {
+  e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+  })
+</script>
+    </body>
+    </head>
+
+
+
+    {% block content %}  {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+  
+</body>
+
+      
+</html>

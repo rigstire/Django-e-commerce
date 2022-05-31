@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+
+    .gr{
+
+        display:grid;
+        grid-template-rows: 5rem 5rem;
+        gap:5px;
+        justify-items: center; 
+        align-content: space-evenly;
+        align-items: center;
+    }    
+
+    .item{
+        font-family: 'Alegreya Sans SC';font-size: 40px;
+    }
+
+</style>
+
+<div class="gr">
+    <div class="item"><a href="{% url 'shoes' %}">Shoes</a></div>
+    <div class="item"><a href="{% url 'clothing' %}">Clothing</a></div>
+    <div class="item"><a href="{% url 'accessories' %}">Accessories</a></div>
+</div>
+
+</html>

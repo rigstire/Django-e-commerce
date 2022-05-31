@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<script src="/path/to/htmx.min.js" defer></script>
+
+<link rel="stylesheet" href="{%static 'css/homeFlex.css'%}">
+<body>
+
+<p>{{ total }}</p>
+
+
+
+<div>
+                             
+    <style>
+        .grid-container{
+            display: grid;
+            grid-template-rows:    repeat(4, 400px);
+            grid-template-columns: repeat(4, 1pc);
+            justify-content: space-evenly;
+            justify-items: center;
+            align-content: space-evenly;
+            align-items: center;
+            }
+
+        
+
+        .grid-item {
+            border: 5px solid black;
+            padding: 15px;  
+            }
+
+        .someHeader {
+            height: 50px;
+            }
+
+        .img {
+            width:300px;
+            height:auto;
+        }
+        
+        .space{
+            height:15px;
+        }
+
+    </style>
+    <div class="someHeader"></div>
+    <div class="someHeader"></div>
+    <div class="someHeader"></div>
+
+    <h1>
+        {% for item in cart %}
+
+            {{ item.name }}
+
+        {% endfor %}
+    </h1>
+
+    <div class="grid-container">
+        {% for item in shoes %}
+        <div class="grid-item">
+        <img src="{{MEDIA_URL}}{{item.img.url}}" width = "250" height = "250">
+        <div class="space"></div>
+        <h5>{{ item.name }}</h5>
+        <h6>{{ item.brand }}</h6>
+        <h6>{{ item.price }}</h6>
+        <p>{% include 'htmx/cart_add.html' %}</p>
+        </a>
+        </div>
+        
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+{% endblock content %}

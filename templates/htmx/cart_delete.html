@@ -1,0 +1,27 @@
+<script src="https://unpkg.com/htmx.org@1.1.0"></script> 
+
+<!-- CSRF request in the headers -->
+<script>
+document.body.addEventListener('htmx:configRequest', (e) => {
+  e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+  })
+</script>
+
+  <style>
+    input[type=submit]:hover{
+      background-color: lightblue;
+      border-style: inset;
+      color: white;
+      padding: 8px 4px;
+      margin: 5px 5px; 
+    }
+  </style>
+ 
+    <div>
+    <input
+    type="button"
+    value="remove"
+    hx-post="{% url 'delete_item' product.id %}"
+    hx-trigger="click"
+        >      
+    </div>

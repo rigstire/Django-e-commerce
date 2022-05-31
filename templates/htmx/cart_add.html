@@ -1,0 +1,28 @@
+<script src="https://unpkg.com/htmx.org@1.1.0"></script> 
+
+<!-- CSRF request in the headers -->
+<script>
+document.body.addEventListener('htmx:configRequest', (e) => {
+  e.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+  })
+</script>
+
+  <style>
+    input[type=button]:hover{
+      background-color: lightblue;
+      border-style: inset;
+      color: white;
+      /* padding: 8px 4px;
+      margin: 5px 5px; */
+    }
+  </style>
+
+    <div>
+    <input
+    type="button"
+    value="add"
+    hx-post="{% url 'add_item' item.id %}"
+    hx-trigger="click"
+        >      
+    </div>
+    <!-- <label><p><a class="item" href="{% url 'add_item' item.id %}">add</a></p></label> --> 
